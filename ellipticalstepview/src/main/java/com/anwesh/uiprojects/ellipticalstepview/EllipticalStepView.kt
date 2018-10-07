@@ -167,4 +167,26 @@ class EllipticalStepView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : EllipticalStepView) {
+
+        private val animator : Animator = Animator(view)
+        private val es : EllipticalStep = EllipticalStep(0)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(Color.parseColor("#212121"))
+            es.draw(canvas, paint)
+            animator.animate {
+                es.update {i, scl ->
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            es.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
