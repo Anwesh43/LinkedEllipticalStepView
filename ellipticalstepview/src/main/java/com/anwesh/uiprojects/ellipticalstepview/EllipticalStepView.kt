@@ -4,6 +4,7 @@ package com.anwesh.uiprojects.ellipticalstepview
  * Created by anweshmishra on 08/10/18.
  */
 
+import android.app.Activity
 import android.view.View
 import android.view.MotionEvent
 import android.graphics.Paint
@@ -189,6 +190,15 @@ class EllipticalStepView(ctx : Context) : View(ctx) {
             es.startUpdating {
                 animator.start()
             }
+        }
+    }
+
+    companion object {
+
+        fun create(activity : Activity) : EllipticalStepView {
+            val view : EllipticalStepView = EllipticalStepView(activity)
+            activity.setContentView(view)
+            return view
         }
     }
 }
