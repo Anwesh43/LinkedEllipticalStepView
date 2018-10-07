@@ -19,7 +19,7 @@ fun Canvas.drawESNode(i : Int, scale : Float, paint : Paint) {
     val w : Float = width.toFloat()
     val h : Float = height.toFloat()
     val gap : Float = w / (nodes + 1)
-    val wSize : Float = 2 * gap/3
+    val wSize : Float = 3 * gap / 4
     paint.color = Color.parseColor("#43A047")
     paint.strokeWidth = Math.min(w, h) / 60
     paint.style = Paint.Style.STROKE
@@ -31,7 +31,7 @@ fun Canvas.drawESNode(i : Int, scale : Float, paint : Paint) {
         val sc : Float = Math.min(0.5f, Math.max(0f, scale - 0.5f * j)) * 2
         save()
         scale(1f, sf)
-        drawArc(RectF(-wSize/2, -wSize/5, wSize/2, wSize/5), 180f, 180f * sc, false, paint)
+        drawArc(RectF(-wSize/2, -wSize/3, wSize/2, wSize/3), 180f, 180f * sc, false, paint)
         restore()
     }
     restore()
